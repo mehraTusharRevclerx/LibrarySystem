@@ -12,6 +12,11 @@ namespace LibrarySystem
         {
             library<string> lib = new library<string>();
 
+            UserInput(lib);
+            Console.ReadKey();
+        }
+        static void UserInput(library<string> lib)
+        {
             Console.WriteLine("Welcome To information center");
             int option;
             do
@@ -20,9 +25,9 @@ namespace LibrarySystem
                 string options = Console.ReadLine();
                 while (!int.TryParse(options, out option))
                 {
+                    Console.WriteLine("Please Enter Correct Option");
                     options = Console.ReadLine();
                 }
-
 
                 switch (option)
                 {
@@ -30,10 +35,11 @@ namespace LibrarySystem
                         AddBook(lib);
                         break;
                     case 2:
-                        RemoveBook(lib);
+                        lib.DisplayAllBooks();
+                        lib.RemoveBookByIndex();
                         break;
                     case 3:
-                        TotalNoOfBooks(lib);
+                        lib.TotalBooksCount();
                         break;
                     case 4:
                         lib.DisplayAllBooks();
@@ -46,17 +52,6 @@ namespace LibrarySystem
                         break;
                 }
             } while (option != 5);
-
-
-            Console.ReadKey();
-
-        }
-        static void RemoveBook(library<string> lib)
-        {
-            lib.DisplayAllBooks();
-
-            lib.RemoveBookByIndex();
-
         }
         static void Cancel()
         {
@@ -68,12 +63,13 @@ namespace LibrarySystem
         {
             Console.WriteLine("Please Enter Your Book Name: ");
             string currBook = Console.ReadLine();
+            while (string.IsNullOrEmpty(currBook))
+            {
+                Console.WriteLine("Please Provide Any Book Name");
+                currBook = Console.ReadLine();
+            }
             lib.Add(currBook);
             Console.WriteLine("Your Book Was Added\n");
-        }
-        static void TotalNoOfBooks(library<string> lib)
-        {
-            lib.TotalBooksCount();
         }
     }
 }

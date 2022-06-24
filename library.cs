@@ -14,10 +14,6 @@ namespace LibrarySystem
         public void Add(T item)
         {
             Books.Add(item);
-            //if (count + 1 < Books.Count)
-            //{
-            //};
-
         }
         public T this[int index]
         {
@@ -36,6 +32,7 @@ namespace LibrarySystem
                 Console.WriteLine("Library Does Not Contains Any Book Sorry :(");
                 return;
             }
+
             else
             {
                 Console.WriteLine($"\nAll Books Are Listed Down Below\n");
@@ -66,8 +63,16 @@ namespace LibrarySystem
                 {
                     bookIndexs = Console.ReadLine();
                 }
-                Books.RemoveAt(bookIndex - 1);
-                Console.WriteLine("Your Book Was Removed SuccessFully");
+
+                if (bookIndex <= Books.Count)
+                {
+                    Books.RemoveAt(bookIndex - 1);
+                    Console.WriteLine("Your Book Was Removed SuccessFully");
+                }
+                else
+                {
+                    Console.WriteLine($"Sorry No Book Avaible at {bookIndex}");
+                }
             }
         }
 
