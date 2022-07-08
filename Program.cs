@@ -17,7 +17,7 @@ namespace LibrarySystem
         }
         static void UserInput(library<string> lib)
         {
-            Console.WriteLine("Welcome To information center");
+            Console.WriteLine("Welcome To info center");
             int option;
             do
             {
@@ -55,7 +55,7 @@ namespace LibrarySystem
         }
         static void Cancel()
         {
-            Console.WriteLine("Thanks For Visiting information center Please Visit Again\nPress Any Key To Exit");
+            Console.WriteLine("Thanks For Visiting info center Please Visit Again\nPress Any Key To Exit");
             Console.ReadKey();
             Environment.Exit(0);
         }

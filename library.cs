@@ -8,7 +8,7 @@ namespace LibrarySystem
 {
     class library<T>
     {
-        List<T> Books = new List<T>();
+        readonly List<T> Books = new List<T>();
 
 
         public void Add(T item)
@@ -64,7 +64,7 @@ namespace LibrarySystem
                     bookIndexs = Console.ReadLine();
                 }
 
-                if (bookIndex <= Books.Count)
+                if (bookIndex <= Books.Count && bookIndex != 0)
                 {
                     Books.RemoveAt(bookIndex - 1);
                     Console.WriteLine("Your Book Was Removed SuccessFully");
